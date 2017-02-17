@@ -94,18 +94,14 @@
 			<div class="right_col" role="main">
 				<div class="container">
 					<h1>The Measurements table</h1>
-					<form method="POST" action="ShopHome.php">
+					<form method="post" action="ShopHome.php">
 
 						<div class="col-lg-4">
 							<div class="input-group">
 								<input type="text" class="form-control" name="search" placeholder="Search for...">
 								<span class="input-group-btn">
-									<!-- <button class="btn btn-secondary" type="button" name="submitted">Go!</button> -->
-									<form method='post'>
-									<input type="submit" class="btn btn-secondary" name="test" id="test" value="Go!"/><br/>
-									</form>
-<!-- 									<button class="btn btn-secondary" type="button" name="submitted">Go!</button>
- -->								</span>
+									<button class="btn btn-secondary" type="button" name="submitted">Go!</button>
+								</span>
 							</div>
 						</div>					
 					</form>
@@ -116,86 +112,26 @@
 					include("connect.php");
 					global $dbcon;
 					
-					
-					function Myfunc()
-					{
-						echo "hello world";
-					}
-					// if(array_key_exists('test', $_POST))
-					// {
-					// 	Myfunc();
-					// }
-
-
-					if(array_key_exists('test', $_POST)) {
-						$phone = $_POST['search'];
-						$quer="SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Phone='$phone'";
+						$phone = $_GET['ph'] ;
+						$quer = "SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Phone ='$phone'";
 						$result = $dbcon->query($quer);
-						$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-						if($row){
+						$data = mysqli_fetch_array($result, MYSQLI_ASSOC);
 						echo "<div class =\"container\"><div class=\"col-lg-8\">";
-						echo "<table class=\"table table-striped\">";
-						echo "<thead  class=\"thead-inverse\">";
-						echo "<tr> <th>Phone</th><th>Name</th>  <th>Latest Date</th> </tr>";
-						echo "</thead>";
-						echo "<tbody>";
-						    $phone = $row['Phone'];
-							echo "<tr><td>";
-							echo "<a href=\"Details.php?ph=<?php echo $phone; ?>\">";
-							echo $row['Phone'];
-							echo "</a>";
-							echo "</td><td>";	
-							echo $row['UserName'];
-							echo "</td><td>";	
-							echo $row['Date'];
-							echo "</td></a></tr>";
-						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-							$phone = $row['Phone'];
-							echo "<tr><td>";
-							echo "<a href=\"Details.php?ph=<?php echo $phone; ?>\">";
-							echo $row['Phone'];
-							echo "</a>";
-							echo "</td><td>";	
-							echo $row['UserName'];
-							echo "</td><td>";	
-							echo $row['Date'];
-							echo "</td></a></tr>";
-						}
-						echo "</tbody>";
-						echo "</table></div></div>";
-					}
-					else
-					{
-						echo "Data not found";
-					}
-
-					}
-					else{
-
-						$quer2="SELECT * FROM measurements cross JOIN user_table ON measurements.Phone= user_table.Phone  order by Date DESC";
-						$result = $dbcon->query($quer2);
-						echo "<div class =\"container\"><div class=\"col-lg-8\">";
-						echo "<table class=\"table table-striped\">";
-						echo "<thead  class=\"thead-inverse\">";
-						echo "<tr> <th>Phone</th><th>Name</th>  <th>Latest Date</th> </tr>";
-						echo "</thead>";
-						echo "<tbody>";
-						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-							$phone = $row['Phone'];
-							echo "<tr><td>";
-							echo '<a href=Details.php?ph='. $phone.'>';
-							echo $row['Phone'];
-							echo "</a>";
-							echo "</td><td>";	
-							echo $row['UserName'];
-							echo "</td><td>";	
-							echo $row['Date'];
-							echo "</td></tr>";
-
-						}
-						echo "</tbody>";
-						echo "</table></div></div>";
-					}
+						echo "<h2>Name :</h2>" ;
+						echo  $data['UserName'] ;
+						echo "<h2>Phone :</h2>";
+						echo $data['Phone'] ;
+						echo "<h2>Chest :</h2>";
+						echo $data['Chest'] ;
+						echo "<h2>Turso :</h2>";
+						echo $data['Turso'] ;
+						echo "<h2>Hip :</h2>";
+						echo $data['Hip'] ;
+						echo "<h2>biceps :</h2>";
+						echo  $data['biceps'] ;											
+						echo "</div></div>";		
+						
+					
 
 					?>
 

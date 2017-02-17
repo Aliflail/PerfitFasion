@@ -1,11 +1,14 @@
-<?
+<?php
 DEFINE ('DB_USER','root');
 DEFINE ('DB_PSWD','');
+DEFINE ('DB_NAME','perfitdb');
+$dbcon = new mysqli('localhost',DB_USER,DB_PSWD,DB_NAME);
 
-$dbcon = mysql_connect('localhost',DB_USER,DB_PSWD);
 if(!$dbcon){
-	die('connection not established'.mysql_error());
+	echo "connection error";
+	die('connection not established'.mysqli_error());
+	
 }
-	echo 'Connected successfully';
+	
 	
 ?>
