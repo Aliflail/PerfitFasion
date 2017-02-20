@@ -107,7 +107,7 @@
 						global $dbcon;
 
 						$phone = $_GET['ph'] ;
-						$quer = "SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Phone ='$phone'";
+						$quer = "SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Date ='$phone' ";
 						$result = $dbcon->query($quer);
 						$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 						echo "<tr><td>";
