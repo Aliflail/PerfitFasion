@@ -6,97 +6,97 @@
 
 	<title> Perfit Fashion | Store's Home</title>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Perfit Fashion Sign In form"./>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
-	<link rel="stylesheet" type="text/css" href="css/custom.min.css">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+	<!-- BOOTSTRAP STYLES-->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="css/font-awesome.css" rel="stylesheet" />
+        <!-- CUSTOM STYLES-->
+    <link href="css/custom.css" rel="stylesheet" />
+     <!-- GOOGLE FONTS-->
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+</head>
 	
 </head>
-<body class="nav-md">
-	<div class="container body">
-		<div class="main_container">
-			<div class="col-md-3 left_col">
-				<div class="left_col scroll-view">
-					<div class="navbar nav_title" >
-						<a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Perfit Fashion</span></a>
-					</div>
+<body>
+<?php
+	session_start();
+?>
+<div id="wrapper">
+         <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="adjust-nav">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="images/logo.jpg" class="img-responsive" style=" margin:0px; max-height: 60px;max-width: auto;" />
 
-					<div class="clearfix"></div>
+                    </a>
+                    
+                </div>
+              
+                <span class="logout-spn" >
+                <?php echo $_SESSION['username'] ?>&nbsp
+                  <a href="logout.php" style="color:#fff;">LogOut</a>  
 
-					<!-- menu profile quick info -->
-					<div class="profile">
-						<div class="profile_pic">
-							<img src="images/3.jpg" alt="..." class="img-circle profile_img responsive">
-						</div>
-						<div class="profile_info">
-							<span>Welcome,</span>
-							<h2>Myntra</h2>
-						</div>
-					</div>
-					<!-- /menu profile quick info -->
-
-					<br/>
-
-					<!-- sidebar menu -->
-					<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-						<div class="menu_section">
-							<h3>General</h3>
-							<ul class="nav side-menu">
-
-								<li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-								</li>
-								<li><a><i class="fa fa-edit"></i> Settings <span class="fa fa-chevron-down"></span></a>
-
-								</li>              
-
-							</ul>
-						</div>           
-
-					</div>
-
-				</div>
-			</div>
-
-
-
-
-
-
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
-
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    Logout
-                    <span class="glyphicon glyphicon-user"></span>
-                  </a>
-                 
-                </li>
-
-              </ul>
-            </nav>
-          </div>
+                </span>
+            </div>
         </div>
-        <!-- /top navigation -->
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                 
 
 
+                    <li class="active-link">
+                        <a href="ShopHome.php" ><i class="fa fa-desktop "></i>SCAN INFO</a>
+                    </li>
+                   
+
+                    <li>
+                        <a href="#"><i class="fa fa-table "></i>VTR FILES </a> 
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-level-up "></i>UPGRADES  </a>
+                    </li>
 
 
+                    <li>
+                        <a href="#"><i class="fa fa-qrcode "></i>REQUESTS</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cog"></i>SETTINGS</a>
+                    </li>
 
-			<div class="right_col" role="main">
-				<div class="container">
-					<h1>The Measurements table</h1>
-					<form method="POST" action="ShopHome.php">
+                    
+                    
+                </ul>
+            </div>
 
-						<div class="col-lg-4">
+        </nav>
+
+
+<div id="page-wrapper" >
+
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-lg-12">
+                     <h2>Scan Details</h2>   
+                    </div>
+                </div>              
+                 <!-- /. ROW  -->
+                  <hr />
+                 
+<div class="row">
+				<form method="POST" action="ShopHome.php">
+
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<div class="input-group">
 								<input type="text" class="form-control" name="search" placeholder="Search for...">
 								<span class="input-group-btn">
@@ -109,56 +109,61 @@
 							</div>
 						</div>					
 					</form>
-
-
+</div>
+<br/>
 
 					<?php
 					include("connect.php");
 					global $dbcon;
 					
 					
-					function Myfunc()
-					{
-						echo "hello world";
-					}
 					// if(array_key_exists('test', $_POST))
 					// {
 					// 	Myfunc();
 					// }
 
-
+					$store = $_SESSION['UserId'];
+					
 					if(array_key_exists('test', $_POST)) {
 						$phone = $_POST['search'];
-						$quer="SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Phone='$phone'";
+						$quer="SELECT * FROM `user_table` u Inner JOIN `orders_table` o On u.Phone = o.UserPhone and o.StoreId = '$store' Inner Join (select Phone,MAX(Date) as max_date from measurements group by Phone) a on u.Phone = a.Phone  where a.Phone LIKE '%$phone%' or UserName LIKE '%$phone%' ";
 						$result = $dbcon->query($quer);
-						$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-						if($row){
-						echo "<div class =\"container\"><div class=\"col-lg-8\">";
-						echo "<table class=\"table table-striped\">";
+						$row = $result->fetch_assoc();
+							if($row){
+						echo " <div class=\"row\"><div class =\"col-lg-8 col-md-8  col-xs-8 col-md-8\">";
+						echo "<table class=\"table table-striped table-hover\">";
 						echo "<thead  class=\"thead-inverse\">";
-						echo "<tr> <th>Phone</th><th>Name</th>  <th>Latest Date</th> </tr>";
+						echo "<tr> <th>Name</th><th>Gender</th>  <th>Scan</th> <th>Delivery</th> <th>Product</th></tr>";
 						echo "</thead>";
 						echo "<tbody>";
 						    $phone = $row['Phone'];
 							echo "<tr><td>";
-							echo "<a href=\"Details.php?ph=<?php echo $phone; ?>\">";
-							echo $row['Phone'];
+							echo "<a href=\"Details.php?ph=".$phone."\">";
+							echo $row['UserName'];
 							echo "</a>";
 							echo "</td><td>";	
-							echo $row['UserName'];
-							echo "</td><td>";	
-							echo $row['Date'];
+							echo $row['Gender'];
+							echo "</td><td>";
+							echo $row['max_date'];
+							echo "</td><td>";
+							echo $row['DeliveryDate'];
+							echo "</td><td>";
+							echo $row['Product'];
 							echo "</td></a></tr>";
-						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+						while ($row =  $result->fetch_assoc()) {
 							$phone = $row['Phone'];
 							echo "<tr><td>";
-							echo "<a href=\"Details.php?ph=<?php echo $phone; ?>\">";
-							echo $row['Phone'];
+							echo "<a href=\"Details.php?ph=".$phone."\">";
+							echo $row['UserName'];
 							echo "</a>";
 							echo "</td><td>";	
-							echo $row['UserName'];
-							echo "</td><td>";	
-							echo $row['Date'];
+							echo $row['Gender'];
+							echo "</td><td>";
+							echo $row['max_date'];
+							echo "</td><td>";
+							echo $row['DeliveryDate'];
+							echo "</td><td>";
+							echo $row['Product'];
 							echo "</td></a></tr>";
 						}
 						echo "</tbody>";
@@ -172,25 +177,29 @@
 					}
 					else{
 
-						$quer2="SELECT * FROM measurements cross JOIN user_table ON measurements.Phone= user_table.Phone  order by Date DESC";
+						$quer2="SELECT * FROM `user_table` u Inner JOIN `orders_table` o On u.Phone = o.UserPhone Inner Join (select Phone,MAX(Date) as max_date from measurements group by Phone) a on u.Phone = a.Phone where o.StoreId = '$store' ";
 						$result = $dbcon->query($quer2);
-						echo "<div class =\"container\"><div class=\"col-lg-8\">";
-						echo "<table class=\"table table-striped\">";
+						echo "<div class =\"container\"><div class=\"col-lg-8 col-sm-8 col-xs-8 col-md-8\">";
+						echo "<table class=\"table table-striped table-hover\">";
 						echo "<thead  class=\"thead-inverse\">";
-						echo "<tr> <th>Phone</th><th>Name</th>  <th>Latest Date</th> </tr>";
+						echo "<tr> <th>Name</th><th>Gender</th>  <th>Scan</th> <th>Delivery</th> <th>Product</th></tr>";
 						echo "</thead>";
 						echo "<tbody>";
-						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+						while ($row  = $result->fetch_assoc()) {
 							$phone = $row['Phone'];
 							echo "<tr><td>";
-							echo '<a href=Details.php?ph='. $phone.'>';
-							echo $row['Phone'];
+							echo "<a href=\"Details.php?ph=".$phone."\">";
+							echo $row['UserName'];
 							echo "</a>";
 							echo "</td><td>";	
-							echo $row['UserName'];
-							echo "</td><td>";	
-							echo $row['Date'];
-							echo "</td></tr>";
+							echo $row['Gender'];
+							echo "</td><td>";
+							echo $row['max_date'];
+							echo "</td><td>";
+							echo $row['DeliveryDate'];
+							echo "</td><td>";
+							echo $row['Product'];
+							echo "</td></a></tr>";
 
 						}
 						echo "</tbody>";
@@ -202,7 +211,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 
 
 </body>

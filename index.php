@@ -26,8 +26,10 @@
 						});
 					});
 				   </script>
-				   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="css/bootstrap.css" rel="stylesheet" />
+     <!-- FONTAWESOME STYLES-->
+    <link href="css/font-awesome.css" rel="stylesheet" />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
@@ -64,31 +66,85 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
 				<div class="facts">
 					<!--login1-->
 					<div class="register">
-						<form>	
-							<input placeholder="Enter Your Phone Number" type="text" required="">
-							<input placeholder="Enter Password" type="text" required="">									
+						
+						<form method="POST" action="index.php">	
+							<input placeholder="Enter Your Phone Number" name="phonenum" type="text" required="">
+							<input placeholder="Enter Password" type="text" name="pass" required="">									
 								<div class="sign-up">
-									<input type="submit" value="Sign In"/>
+									<input type="submit" name="loginuser" value="Sign In"/>
 								</div>
 						</form>
 					</div>
 				</div>
 			</div>	
-
+			
 			<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 				<div class="facts">
 					<div class="register">
-						<form>										
-							<input placeholder="Store Name" class="mail" type="text" required="">									
-							<input placeholder="Password" class="lock" type="password" required="">										
+						
+						<form method="POST" action="index.php">										
+							<input placeholder="Store Name" name="username" class="mail" type="text" required="">									
+							<input placeholder="Password"  name="password" class="lock" type="password" required="">										
 							<div class="sign-up"><a href="ShopHome.php">
-								<input type="submit" value="Sign In"/></a>
+								<input type="submit" name="login" value="Sign In"/></a>
 							</div>
 						</form>
 					</div>
 				</div> 
 			</div> 			        					            	      
 			 	
+
+<?php
+
+			include("connect.php");
+			global $dbcon;
+			$msg = '';
+           
+           
+            if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password'])) {
+
+            	$store = $_POST['username'];
+           		$pass = $_POST['password'];
+            	$quer="SELECT * FROM store_table where   Store_Name = '$store' and Password = '$pass'";
+				$result = $dbcon->query($quer);
+				$row =  $result->fetch_assoc();
+
+               if ($row) {
+                  $_SESSION['valid'] = true;
+                  $_SESSION['timeout'] = time();
+                  $_SESSION['username'] = $row['Store_Name'];
+                  $_SESSION['UserId'] = $row['St_Id'];
+                  $myid = $_SESSION['UserId'];
+                  echo $myid;
+                 header('Location:ShopHome.php');
+               }else {
+                  $msg = 'Wrong username or password';
+               }
+            }
+
+            if (isset($_POST['loginuser']) && !empty($_POST['phonenum']) && !empty($_POST['pass'])) {
+
+            	$user = $_POST['phonenum'];
+           		$passw = $_POST['pass'];
+            	$quer="SELECT * FROM user_table where   Phone = '$user' and Password = '$passw'";
+				$result = $dbcon->query($quer);
+				$row =  $result->fetch_assoc();
+
+               if ($row) {
+                  $_SESSION['valid'] = true;
+                  $_SESSION['timeout'] = time();
+                  $_SESSION['username'] = $row['UserName'];
+                  $_SESSION['phone'] = $row['Phone'];
+
+                 header('Location:UserHome.php');
+               }else {
+                  $msg = 'Wrong username or password';
+               }
+            }
+
+
+			?>
+
 		</div>	
 		
 	</div>

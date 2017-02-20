@@ -4,7 +4,7 @@
 <head>
 	
 
-	<title> Perfit Fashion | Store's Home</title>
+	<title> Perfit Fashion | Users Home</title>
 
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,7 +31,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="#">
-						<img src="images/logo.jpg" class="img-responsive" style=" margin:0px; max-height: 60px;max-width: auto;" />
+						<img src="images/3.jpg" class="img-responsive" style=" margin:0px; max-height: 60px;max-width: auto;" />
 
 					</a>
 
@@ -51,17 +51,14 @@
 
 
 					<li class="active-link">
-						<a href="ShopHome.php" ><i class="fa fa-desktop "></i>SCAN INFO</a>
+						<a href="UserHome.php" ><i class="fa fa-desktop "></i>SCAN INFO</a>
 					</li>
 
 
 					<li>
-						<a href="#"><i class="fa fa-table "></i>VTR FILES </a> 
+						<a href="#"><i class="fa fa-table "></i>SHARE</a> 
 					</li>
-					<li>
-						<a href="#"><i class="fa fa-level-up "></i>UPGRADES  </a>
-					</li>
-
+					
 
 					<li>
 						<a href="#"><i class="fa fa-qrcode "></i>REQUESTS</a>
@@ -113,16 +110,6 @@
 						$quer = "SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Phone ='$phone'";
 						$result = $dbcon->query($quer);
 						$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-						echo "<tr><td>";
-							echo "<h3>Name</h3>";
-							echo "</td><td><h3>"; 
-							echo $row['UserName'];							
-						echo "</h3></td></tr>";	
-						echo "<tr><td>";
-							echo "Phone Number :";
-							echo "</td><td>"; 
-							echo $row['Phone'];							
-						echo "</td></tr>";	
 						echo "<tr><td>";
 							echo "Chest :";
 							echo "</td><td>"; 
