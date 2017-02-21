@@ -114,7 +114,7 @@
 
 					<?php
 					include("connect.php");
-					global $dbcon;
+					global $conn;
 					
 					
 					// if(array_key_exists('test', $_POST))
@@ -127,8 +127,9 @@
 					if(array_key_exists('test', $_POST)) {
 						$phone = $_POST['search'];
 						$quer="SELECT * FROM `user_table` u Inner JOIN `orders_table` o On u.Phone = o.UserPhone and o.StoreId = '$store' Inner Join (select Phone,MAX(Date) as max_date from measurements group by Phone) a on u.Phone = a.Phone  where a.Phone LIKE '%$phone%' or UserName LIKE '%$phone%' ";
-						$result = $dbcon->query($quer);
-						$row = $result->fetch_assoc();
+						$result = $conn->prepare($quer);
+						$result->execute();
+						$row = $result->fetch(PDO::FETCH_ASSOC);
 							if($row){
 						echo " <div class=\"row\"><div class =\"col-lg-8 col-md-8  col-xs-8 col-md-8\">";
 						echo "<table class=\"table table-striped table-hover\">";
@@ -178,14 +179,15 @@
 					else{
 
 						$quer2="SELECT * FROM `user_table` u Inner JOIN `orders_table` o On u.Phone = o.UserPhone Inner Join (select Phone,MAX(Date) as max_date from measurements group by Phone) a on u.Phone = a.Phone where o.StoreId = '$store' ";
-						$result = $dbcon->query($quer2);
+						$result = $conn->prepare($quer2);
+						$result->execute();
 						echo "<div class =\"container\"><div class=\"col-lg-8 col-sm-8 col-xs-8 col-md-8\">";
 						echo "<table class=\"table table-striped table-hover\">";
 						echo "<thead  class=\"thead-inverse\">";
 						echo "<tr> <th>Name</th><th>Gender</th>  <th>Scan</th> <th>Delivery</th> <th>Product</th></tr>";
 						echo "</thead>";
 						echo "<tbody>";
-						while ($row  = $result->fetch_assoc()) {
+						while ($row  = $result->fetch(PDO::FETCH_ASSOC)) {
 							$phone = $row['Phone'];
 							echo "<tr><td>";
 							echo "<a href=\"Details.php?ph=".$phone."\">";

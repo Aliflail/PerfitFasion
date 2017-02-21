@@ -104,12 +104,13 @@
 					<tbody>
 						<?php
 						include("connect.php");
-						global $dbcon;
+						global $conn;
 
 						$phone = $_GET['ph'] ;
 						$quer = "SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Date ='$phone' ";
-						$result = $dbcon->query($quer);
-						$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+						$result = $conn->prepare($quer);
+						$result->execute();
+						$row = $result->fetch(PDO::FETCH_ASSOC);
 						echo "<tr><td>";
 							echo "Chest :";
 							echo "</td><td>"; 

@@ -115,14 +115,15 @@
 					$user = $_SESSION['phone'];
 					$id = 1;
 						$quer2 = "SELECT * FROM `measurements` where Phone = '$user' order by Date desc";
-						$result = $dbcon->query($quer2);
+						$result = $conn->prepare($quer2);
+						$result->execute();
 						echo "<div class =\"container\"><div class=\"col-lg-8 col-sm-8 col-xs-8 col-md-8\">";
 						echo "<table class=\"table table-striped table-hover\">";
 						echo "<thead  class=\"thead-inverse\">";
 						echo "<tr>  <th>#</th> <th>Scan Date</th> </tr>";
 						echo "</thead>";
 						echo "<tbody>";
-						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+						while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 							$phone = $row['Date'];
 							echo "<tr href=\"UserDetails.php?ph=".$phone."\"><td>";							
 							echo $id;

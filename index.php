@@ -1,5 +1,3 @@
-
-
 <?php
    ob_start();
    session_start();
@@ -69,7 +67,7 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
 						
 						<form method="POST" action="index.php">	
 							<input placeholder="Enter Your Phone Number" name="phonenum" type="text" required="">
-							<input placeholder="Enter Password" type="text" name="pass" required="">									
+							<input placeholder="Enter Password" type="password" name="pass" required="">									
 								<div class="sign-up">
 									<input type="submit" name="loginuser" value="Sign In"/>
 								</div>
@@ -97,7 +95,7 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
 <?php
 
 			include("connect.php");
-			global $dbcon;
+			global $conn;
 			$msg = '';
            
            
@@ -106,8 +104,9 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
             	$store = $_POST['username'];
            		$pass = $_POST['password'];
             	$quer="SELECT * FROM store_table where   Store_Name = '$store' and Password = '$pass'";
-				$result = $dbcon->query($quer);
-				$row =  $result->fetch_assoc();
+				$result = $conn->prepare($quer);
+				$result->execute();
+				$row = $result->fetch(PDO::FETCH_ASSOC);
 
                if ($row) {
                   $_SESSION['valid'] = true;
@@ -127,8 +126,9 @@ integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7T
             	$user = $_POST['phonenum'];
            		$passw = $_POST['pass'];
             	$quer="SELECT * FROM user_table where   Phone = '$user' and Password = '$passw'";
-				$result = $dbcon->query($quer);
-				$row =  $result->fetch_assoc();
+				$result = $conn->prepare($quer);
+				$result->execute();
+				$row = $result->fetch(PDO::FETCH_ASSOC);
 
                if ($row) {
                   $_SESSION['valid'] = true;
