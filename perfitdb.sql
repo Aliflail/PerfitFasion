@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2017 at 11:40 AM
+-- Generation Time: Feb 22, 2017 at 11:44 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -113,7 +113,6 @@ CREATE TABLE `user_table` (
   `Phone` int(100) UNSIGNED NOT NULL,
   `Password` varchar(50) NOT NULL,
   `UserName` varchar(100) DEFAULT NULL,
-  `StoreId` int(11) DEFAULT NULL,
   `Gender` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -121,11 +120,11 @@ CREATE TABLE `user_table` (
 -- Dumping data for table `user_table`
 --
 
-INSERT INTO `user_table` (`Phone`, `Password`, `UserName`, `StoreId`, `Gender`) VALUES
-(449555960, 'qwerty', 'dinam', 1, 'Male'),
-(828158102, 'password', 'Alif Noushad', 3, 'Female'),
-(1234567891, 'alif', 'asdfgh', 2, 'Male'),
-(1234567899, 'alif', 'alif', 1, 'Female');
+INSERT INTO `user_table` (`Phone`, `Password`, `UserName`, `Gender`) VALUES
+(449555960, 'qwerty', 'dinam', 'Male'),
+(828158102, 'password', 'Alif Noushad', 'Female'),
+(1234567891, 'alif', 'asdfgh', 'Male'),
+(1234567899, 'alif', 'alif', 'Female');
 
 --
 -- Indexes for dumped tables
@@ -160,8 +159,7 @@ ALTER TABLE `store_table`
 -- Indexes for table `user_table`
 --
 ALTER TABLE `user_table`
-  ADD PRIMARY KEY (`Phone`),
-  ADD KEY `StoreId` (`StoreId`);
+  ADD PRIMARY KEY (`Phone`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -187,12 +185,6 @@ ALTER TABLE `measurements`
 --
 ALTER TABLE `orders_table`
   ADD CONSTRAINT `orders_table_ibfk_1` FOREIGN KEY (`StoreId`) REFERENCES `store_table` (`St_Id`);
-
---
--- Constraints for table `user_table`
---
-ALTER TABLE `user_table`
-  ADD CONSTRAINT `user_table_ibfk_1` FOREIGN KEY (`StoreId`) REFERENCES `store_table` (`St_Id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
