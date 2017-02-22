@@ -16,7 +16,7 @@
         <!-- CUSTOM STYLES-->
     <link href="css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
 <script type="text/javascript">
 	$(document).ready(function(){
     $('table tr').click(function(){

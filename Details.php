@@ -16,7 +16,7 @@
 	<!-- CUSTOM STYLES-->
 	<link href="css/custom.css" rel="stylesheet" />
 	<!-- GOOGLE FONTS-->
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
 </head>
 
 </head>
@@ -143,6 +143,47 @@
 							echo "Biceps :";
 							echo "</td><td>"; 
 							echo $row['biceps'];							
+						echo "</td></tr>";	
+						echo "<tr><td>";
+							echo "Neck :";
+							echo "</td><td>"; 
+							echo $row['Neck'];							
+						echo "</td></tr>";	
+						echo "<tr><td>";
+							echo "Shoulder :";
+							echo "</td><td>"; 
+							echo $row['Shoulder'];							
+													
+						echo "</td></tr>";	
+						echo "<tr><td>";
+							echo "Arm Length :";
+							echo "</td><td>"; 
+							echo $row['ArmLength'];							
+													
+						echo "</td></tr>";	
+						echo "<tr><td>";
+							echo "Waist :";
+							echo "</td><td>"; 
+							echo $row['Waist'];							
+													
+						echo "</td></tr>";	
+						echo "<tr><td>";
+							echo "Thighs :";
+							echo "</td><td>"; 
+							echo $row['Thighs'];							
+													
+						echo "</td></tr>";	
+						echo "<tr><td>";
+							echo "Crotch :";
+							echo "</td><td>"; 
+							echo $row['Crotch'];							
+													
+						echo "</td></tr>";	
+						echo "<tr><td>";
+							echo "Height :";
+							echo "</td><td>"; 
+							echo $row['Height'];							
+													
 						echo "</td></tr>";	
 										
 

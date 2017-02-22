@@ -31,14 +31,14 @@ img{max-width:100%;}
 body{
 	background:url("../images/1.jpg") 0px 0px no-repeat;
 	text-align: center;
-	font-family:Nunito-Light;
+	font-family: 'Roboto', sans-serif;
 	background-attachment: fixed;
     background-position: center;
     background-size: cover;
 }
 
 @font-face{
-	font-family: "Nunito-Light";
+	font-family: 'Roboto', sans-serif;
 	src:url(../fonts/Nunito-Light.ttf);
 }
 
@@ -71,7 +71,7 @@ h1{
   border:none;
   color: #fff;
   font-size: 24px;
-  font-family:Nunito-Light;
+  font-family: 'Roboto', sans-serif;
   cursor: pointer;
   padding:5px 30px;
   margin:5px;
@@ -128,7 +128,7 @@ h2.resp-accordion {
 .register input[type="text"],.register input[type="password"] {
 	outline: none;
     font-size:16px;
-	font-family:Nunito-Light;
+	font-family: 'Roboto', sans-serif;
 	color: #fff;
 	padding: 15px 10px;
 	border:none;
@@ -146,7 +146,7 @@ h2.resp-accordion {
     color: #fff;
 	border: 2px solid #fff;
     font-size: 18px;
-	font-family:Nunito-Light;
+	font-family: 'Roboto', sans-serif;
     padding: 15px 10px 15px 15px;
     width: 85%;
     cursor: pointer;
@@ -190,7 +190,7 @@ h3{
 .register a{
 	color:#fbfbdd;
 	font-size: 18px;
-	font-family:Nunito-Light;
+	font-family: 'Roboto', sans-serif;
 }
 
 
@@ -202,7 +202,7 @@ h3{
 }
 .copy-right p {
 	color: #fff;
-	font-family:Nunito-Light;
+	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
 	font-weight:600;
 }

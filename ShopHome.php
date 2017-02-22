@@ -16,7 +16,7 @@
         <!-- CUSTOM STYLES-->
     <link href="css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
-   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
 </head>
 	
 </head>
@@ -126,7 +126,7 @@
 					
 					if(array_key_exists('test', $_POST)) {
 						$phone = $_POST['search'];
-						$quer="SELECT * FROM `user_table` u Inner JOIN `orders_table` o On u.Phone = o.UserPhone and o.StoreId = '$store' Inner Join (select Phone,MAX(Date) as max_date from measurements group by Phone) a on u.Phone = a.Phone  where a.Phone LIKE '%$phone%' or UserName LIKE '%$phone%' ";
+						$quer="SELECT * FROM `user_table` Inner JOIN (SELECT Max(Date) as max_date ,Phone,StoreId FROM `measurements`where StoreId = '$store' GROUP BY Phone,StoreId) a On user_table.Phone = a.Phone left Join orders_table on orders_table.UserPhone = a.Phone  where a.Phone LIKE '%$phone%' or UserName LIKE '%$phone%' ";
 						$result = $conn->prepare($quer);
 						$result->execute();
 						$row = $result->fetch(PDO::FETCH_ASSOC);
@@ -178,7 +178,7 @@
 					}
 					else{
 
-						$quer2="SELECT * FROM `user_table` u Inner JOIN `orders_table` o On u.Phone = o.UserPhone Inner Join (select Phone,MAX(Date) as max_date from measurements group by Phone) a on u.Phone = a.Phone where o.StoreId = '$store' ";
+						$quer2="SELECT * FROM `user_table` Inner JOIN (SELECT Max(Date) as max_date,Phone,StoreId FROM `measurements`where StoreId = '$store' GROUP BY Phone,StoreId) a On user_table.Phone = a.Phone left Join orders_table on orders_table.UserPhone = a.Phone ";
 						$result = $conn->prepare($quer2);
 						$result->execute();
 						echo "<div class =\"container\"><div class=\"col-lg-8 col-sm-8 col-xs-8 col-md-8\">";

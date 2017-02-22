@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2017 at 03:58 PM
+-- Generation Time: Feb 22, 2017 at 11:40 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -30,6 +30,7 @@ CREATE TABLE `measurements` (
   `Phone` int(100) UNSIGNED NOT NULL,
   `Name` varchar(200) NOT NULL,
   `Date` datetime NOT NULL,
+  `StoreId` int(200) NOT NULL,
   `Chest` int(11) DEFAULT NULL,
   `Turso` int(11) DEFAULT NULL,
   `Hip` int(11) DEFAULT NULL,
@@ -47,13 +48,13 @@ CREATE TABLE `measurements` (
 -- Dumping data for table `measurements`
 --
 
-INSERT INTO `measurements` (`Phone`, `Name`, `Date`, `Chest`, `Turso`, `Hip`, `biceps`, `Neck`, `Shoulder`, `ArmLength`, `Waist`, `Thighs`, `Crotch`, `Height`) VALUES
-(828158102, 'Alif Noushad', '2017-02-02 00:00:00', 45, 23, 45, 16, 23, 45, 34, 89, 78, 77, 178),
-(828158102, 'Alif Noushad', '2017-03-09 10:12:30', 34, 73, 95, 91, 23, 45, 34, 89, 90, 77, 178),
-(1234567891, 'asdfgh', '2017-02-17 00:00:00', 90, 43, 76, 44, 45, 68, 99, 89, 55, 90, 172),
-(1234567899, 'alif', '2016-12-21 10:11:48', 12, 33, 44, 88, 67, 12, 90, 56, 77, 99, 123),
-(1234567899, 'alif', '2017-02-02 10:11:48', 78, 23, 55, 44, 33, 55, 66, 99, 11, 22, 123),
-(1234567899, 'alif', '2017-02-16 00:00:00', 87, 34, 55, 22, 34, 66, 78, 44, 90, 23, 167);
+INSERT INTO `measurements` (`Phone`, `Name`, `Date`, `StoreId`, `Chest`, `Turso`, `Hip`, `biceps`, `Neck`, `Shoulder`, `ArmLength`, `Waist`, `Thighs`, `Crotch`, `Height`) VALUES
+(828158102, 'Alif Noushad', '2017-02-02 00:00:00', 1, 45, 23, 45, 16, 23, 45, 34, 89, 78, 77, 178),
+(828158102, 'Alif Noushad', '2017-03-09 10:12:30', 2, 34, 73, 95, 91, 23, 45, 34, 89, 90, 77, 178),
+(1234567891, 'asdfgh', '2017-02-17 00:00:00', 2, 90, 43, 76, 44, 45, 68, 99, 89, 55, 90, 172),
+(1234567899, 'alif', '2016-12-21 10:11:48', 3, 12, 33, 44, 88, 67, 12, 90, 56, 77, 99, 123),
+(1234567899, 'alif', '2017-02-02 10:11:48', 4, 78, 23, 55, 44, 33, 55, 66, 99, 11, 22, 123),
+(1234567899, 'alif', '2017-02-16 00:00:00', 1, 87, 34, 55, 22, 34, 66, 78, 44, 90, 23, 167);
 
 -- --------------------------------------------------------
 
@@ -76,7 +77,6 @@ CREATE TABLE `orders_table` (
 --
 
 INSERT INTO `orders_table` (`OrderId`, `UserPhone`, `Product`, `OderDate`, `DeliveryDate`, `DeliveryStatus`, `StoreId`) VALUES
-(1, 828158102, 'Shirt', '2017-02-01', '2017-02-28', 0, 1),
 (2, 1234567899, 'Pants', '2017-02-09', '2017-02-23', 0, 1),
 (3, 1234567891, 'Shirts', '2017-03-01', '2017-03-30', 1, 2),
 (4, 1234567899, 'shirt', '2017-02-28', '2017-03-24', 0, 2);
