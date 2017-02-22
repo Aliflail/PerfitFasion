@@ -110,7 +110,7 @@
 						global $conn;
 
 						$phone = $_GET['ph'] ;
-						$quer = "SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Phone ='$phone'";
+						$quer = "SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Phone ='$phone' ORDER BY Date Desc";
 						$result = $conn->prepare($quer);
 						$result->execute();
 						$row = $result->fetch(PDO::FETCH_ASSOC);

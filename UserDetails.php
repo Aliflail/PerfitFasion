@@ -105,9 +105,9 @@
 						<?php
 						include("connect.php");
 						global $conn;
-
+						$user = $_GET['phone'];
 						$phone = $_GET['ph'] ;
-						$quer = "SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Date ='$phone' ";
+						$quer = "SELECT * FROM measurements INNER JOIN user_table ON measurements.Phone = user_table.Phone and  measurements.Date ='$phone' and user_table.Phone = '$user' ";
 						$result = $conn->prepare($quer);
 						$result->execute();
 						$row = $result->fetch(PDO::FETCH_ASSOC);

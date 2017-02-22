@@ -125,10 +125,10 @@
 						echo "<tbody>";
 						while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 							$phone = $row['Date'];
-							echo "<tr href=\"UserDetails.php?ph=".$phone."\"><td>";							
+							echo "<tr href=\"UserDetails.php?ph=".$phone."&user=".$user."\"><td>";							
 							echo $id;
 							echo "</td><td>";
-							echo "<a href=\"UserDetails.php?ph=".$phone."\">";
+							echo "<a href=\"UserDetails.php?ph=".$phone."&user=".$user."\">";
 							echo $row['Date'];							
 							echo "</a></td></tr>";
 							$id = $id + 1;

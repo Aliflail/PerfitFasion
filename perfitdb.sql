@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 22, 2017 at 11:44 AM
+-- Generation Time: Feb 22, 2017 at 04:01 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `measurements` (
-  `Phone` int(100) UNSIGNED NOT NULL,
+  `Phone` int(250) UNSIGNED NOT NULL,
   `Name` varchar(200) NOT NULL,
   `Date` datetime NOT NULL,
   `StoreId` int(200) NOT NULL,
@@ -110,7 +110,7 @@ INSERT INTO `store_table` (`St_Id`, `Store_Name`, `Password`) VALUES
 --
 
 CREATE TABLE `user_table` (
-  `Phone` int(100) UNSIGNED NOT NULL,
+  `Phone` int(250) UNSIGNED NOT NULL,
   `Password` varchar(50) NOT NULL,
   `UserName` varchar(100) DEFAULT NULL,
   `Gender` varchar(10) NOT NULL

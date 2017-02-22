@@ -126,7 +126,7 @@
 					
 					if(array_key_exists('test', $_POST)) {
 						$phone = $_POST['search'];
-						$quer="SELECT * FROM `user_table` Inner JOIN (SELECT Max(Date) as max_date ,Phone,StoreId FROM `measurements`where StoreId = '$store' GROUP BY Phone,StoreId) a On user_table.Phone = a.Phone left Join orders_table on orders_table.UserPhone = a.Phone  where a.Phone LIKE '%$phone%' or UserName LIKE '%$phone%' ";
+						$quer="SELECT * FROM `user_table` Inner JOIN (SELECT Max(Date) as max_date ,Phone,StoreId FROM `measurements`where StoreId = '$store' GROUP BY Phone,StoreId) a On user_table.Phone = a.Phone left Join orders_table on orders_table.UserPhone = a.Phone and orders_table.StoreId = '$store' where a.Phone LIKE '%$phone%' or UserName LIKE '%$phone%' ";
 						$result = $conn->prepare($quer);
 						$result->execute();
 						$row = $result->fetch(PDO::FETCH_ASSOC);
@@ -178,7 +178,7 @@
 					}
 					else{
 
-						$quer2="SELECT * FROM `user_table` Inner JOIN (SELECT Max(Date) as max_date,Phone,StoreId FROM `measurements`where StoreId = '$store' GROUP BY Phone,StoreId) a On user_table.Phone = a.Phone left Join orders_table on orders_table.UserPhone = a.Phone ";
+						$quer2="SELECT * FROM `user_table` Inner JOIN (SELECT Max(Date) as max_date,Phone,StoreId FROM `measurements`where StoreId = '$store' GROUP BY Phone,StoreId) a On user_table.Phone = a.Phone left Join orders_table on orders_table.UserPhone = a.Phone and orders_table.StoreId = '$store'";
 						$result = $conn->prepare($quer2);
 						$result->execute();
 						echo "<div class =\"container\"><div class=\"col-lg-8 col-sm-8 col-xs-8 col-md-8\">";
