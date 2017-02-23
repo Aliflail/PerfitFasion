@@ -26,7 +26,7 @@
 				   </script>
 	<link href="css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
-    <link href="css/font-awesome.css" rel="stylesheet" />
+   
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
 
 
